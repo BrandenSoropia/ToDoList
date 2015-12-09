@@ -1,13 +1,13 @@
 package todolist;
 
-public class todo {
+public class Todo {
 	private String task;
 	private int status; // 1 is completed, 0 is not completed
 	private int taskNum; // ID used to identify todo entry
-	private todo nextTodo;
-	private todo prevTodo;
+	private Todo nextTodo;
+	private Todo prevTodo;
 	
-	public todo(String task, int taskNum, todo next, todo prev) {
+	public Todo(String task, int taskNum, Todo next, Todo prev) {
 		this.task = task;
 		this.status = 0;
 		this.taskNum = taskNum;
@@ -38,19 +38,19 @@ public class todo {
 		this.taskNum = taskNum;
 	}
 
-	private todo getNextTodo() {
+	private Todo getNextTodo() {
 		return this.nextTodo;
 	}
 
-	private void setNextTodo(todo nextTodo) {
+	private void setNextTodo(Todo nextTodo) {
 		this.nextTodo = nextTodo;
 	}
 
-	private todo getPrevTodo() {
+	private Todo getPrevTodo() {
 		return this.prevTodo;
 	}
 
-	private void setPrevTodo(todo prevTodo) {
+	private void setPrevTodo(Todo prevTodo) {
 		this.prevTodo = prevTodo;
 	}
 	
@@ -70,8 +70,8 @@ public class todo {
 	}
 // small quick test 
 //	public static void main(String[] args) {
-//		todo todo1 = new todo("Test todo class.", 0, null, null);
-//		todo todo2 = new todo("Next is set.", 0, null, todo1);
+//		Todo todo1 = new todo("Test todo class.", 0, null, null);
+//		Todo todo2 = new todo("Next is set.", 0, null, todo1);
 //		todo2.setTaskNum(1);
 //		todo1.setNextTodo(todo2);
 //		System.out.println(todo1.toString());
