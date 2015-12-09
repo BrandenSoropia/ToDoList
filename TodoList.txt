@@ -1,0 +1,41 @@
+To do list program:
+- Create new TODO’s
+- Delete TODO’s
+- Display TODO’s 
+- Complete TODO’s
+- Edit TODO’s
+-> change their appearance upon completion
+
+Create:
+- read text from input box
+- move it to list of TODO’s
+- give it a check box to indicate status
+- save TODO in file
+- clear input text
+
+Delete:
+- remove TODO from list of TODO’s
+- remove it from save file
+
+Edit:
+- get TODO’s task and change it
+
+Complete:
+- grey out TODO on button check
+- save completed status in save file
+(- move to bottom or remove from display list)
+
+Display: 
+— upon initialize — 
+		- read save file
+		- create TODO’s for each
+		- display in list
+— upon TODO creation — 
+		- add new TODO to bottom of current list
+
+Save: (automatic: do upon each action)
+- write all TODO’s upon creation to save file
+
+Update:
+- write to save file
+

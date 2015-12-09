@@ -3,57 +3,58 @@ package todolist;
 public class Todo {
 	private String task;
 	private int status; // 1 is completed, 0 is not completed
-	private int taskNum; // ID used to identify todo entry
+	private int todoNum; // ID used to identify todo entry
 	private Todo nextTodo;
 	private Todo prevTodo;
 	
-	public Todo(String task, int taskNum, Todo next, Todo prev) {
+	public Todo(String task, int todoNum, Todo next, Todo prev) {
 		this.task = task;
 		this.status = 0;
-		this.taskNum = taskNum;
+		this.todoNum = todoNum;
 		this.nextTodo = next;
 		this.prevTodo = prev;
 	}
 	
-	private String getTask() {
-		return this.task;
+	String getTask() {
+		return task;
 	}
-	
-	private void setTask(String task) {
+
+	void setTask(String task) {
 		this.task = task;
 	}
-	
-	private int getStatus() {
-		return this.status;
+
+	int getStatus() {
+		return status;
 	}
-	
-	private void setStatus(int status) {
+
+	void setStatus(int status) {
 		this.status = status;
 	}
-	private int getTaskNum() {
-		return this.taskNum;
+
+	int getTodoNum() {
+		return todoNum;
 	}
 
-	private void setTaskNum(int taskNum) {
-		this.taskNum = taskNum;
+	void setTodoNum(int todoNum) {
+		this.todoNum = todoNum;
 	}
 
-	private Todo getNextTodo() {
-		return this.nextTodo;
+	Todo getNextTodo() {
+		return nextTodo;
 	}
 
-	private void setNextTodo(Todo nextTodo) {
+	void setNextTodo(Todo nextTodo) {
 		this.nextTodo = nextTodo;
 	}
 
-	private Todo getPrevTodo() {
-		return this.prevTodo;
+	Todo getPrevTodo() {
+		return prevTodo;
 	}
 
-	private void setPrevTodo(Todo prevTodo) {
+	void setPrevTodo(Todo prevTodo) {
 		this.prevTodo = prevTodo;
 	}
-	
+
 	private void changeStatus() {
 		if (this.status == 0) {
 			this.status = 1;
@@ -64,18 +65,26 @@ public class Todo {
 		} 
 	}
 	
+	boolean matchingTodoNum(int todoNum) {
+		if (this.getTodoNum() == todoNum) {
+			return true;
+		}
+		return false;
+	}
+	
+	
 	@Override
 	public String toString() {
-		return "Task: " + this.task + "\nStatus: " + this.status + "\nTask Number: " + this.taskNum + "\n";
+		return "Task: " + this.task + "\nStatus: " + this.status + "\nTask Number: " + this.todoNum + "\n";
 	}
 // small quick test 
-//	public static void main(String[] args) {
-//		Todo todo1 = new todo("Test todo class.", 0, null, null);
-//		Todo todo2 = new todo("Next is set.", 0, null, todo1);
-//		todo2.setTaskNum(1);
-//		todo1.setNextTodo(todo2);
-//		System.out.println(todo1.toString());
-//		System.out.println(todo1.getNextTodo().toString());
-//		System.out.println("Prev node is " + todo1.getNextTodo().getPrevTodo().toString());
-//	}
+	public static void main(String[] args) {
+		Todo todo1 = new Todo("Test todo class.", 0, null, null);
+		Todo todo2 = new Todo("Next is set.", 0, null, todo1);
+		todo2.setTodoNum(1);
+		todo1.setNextTodo(todo2);
+		System.out.println(todo1.toString());
+		System.out.println(todo1.getNextTodo().toString());
+		System.out.println("Prev node is " + todo1.getNextTodo().getPrevTodo().toString());
+	}
 }

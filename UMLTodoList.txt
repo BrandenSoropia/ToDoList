@@ -1,0 +1,25 @@
+todo:
+	Data Members:
+		- task: string
+		- status: int
+		- taskNum: int
+		- nextTodo: todo
+		- prevTodoT: todo
+	Methods:
+		- getTask(this): string
+		- setTask(this): string
+		- toString(this): string
+		
+todoList:
+	Data Members:
+		- head: todo
+		- tail: todo
+		- numTodos: int
+		- numCompleted: int
+	Methods:
+		- addEntry(entry: todo, thisT)
+		- deleteEntry(target: todo, this)
+		- findTodo(target: todo, this): todo
+		- updateTaskNum(this)n
+		- toString(this): string
+		- save(this)
