@@ -55,9 +55,12 @@ public class TodoList {
 	void addTodo(Todo entry) {
 		if (this.head == null) { // Check if empty Todo list
 			this.head = entry;
+			this.tail = entry;
+		} else {
+			Todo oldTail = this.tail; // Save old tail
+			oldTail.setNextTodo(entry); // Add new Todo to tail's next
+			this.tail = oldTail.getNextTodo(); // Reset tail to newly added Todo
 		}
-		
-		this.tail.setNextTodo(entry);
 	}
 	
 	Todo findTodo(int todoNum) throws Exception {
