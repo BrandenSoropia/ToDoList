@@ -52,18 +52,22 @@ public class TodoList {
 		this.numCompleted = numCompleted;
 	}
 	
+	
 	void addTodo(Todo entry) {
 		if (this.head == null) { // Check if empty Todo list
 			this.head = entry;
+			this.head.setTodoNum(1);
 			this.tail = entry;
 		} else {
 			Todo oldTail = this.tail; // Save old tail
 			oldTail.setNextTodo(entry); // Add new Todo to tail's next
 			this.tail = oldTail.getNextTodo(); // Reset tail to newly added Todo
+			this.tail.setTodoNum(oldTail.getTodoNum() + 1);
 		}
+		this.setNumTodos(this.getNumTodos() + 1);
 	}
 	
-	Todo findTodo(int todoNum) throws Exception {
+	Todo findTodo(int todoNum) {
 		Todo current = this.head;
 		// Go through all todo's in list and compare their todoNum with given todoNum
 		while (current != null) {
@@ -102,8 +106,12 @@ public class TodoList {
 	void printContents() {
 		Todo current = this.head;
 		
+		if (this.head == null) {
+			System.out.println("The Todo List is Empty\n");
+		}
+		
 		while(current != null) {
-			current.toString();
+			System.out.println(current.toString());
 			current = current.getNextTodo();
 		}
 	}

@@ -7,12 +7,12 @@ public class Todo {
 	private Todo nextTodo;
 	private Todo prevTodo;
 	
-	public Todo(String task, int todoNum, Todo next, Todo prev) {
+	public Todo(String task) {
 		this.task = task;
 		this.status = 0;
-		this.todoNum = todoNum;
-		this.nextTodo = next;
-		this.prevTodo = prev;
+		this.todoNum = 0; // Mark unknown
+		this.nextTodo = null;
+		this.prevTodo = null;
 	}
 	
 	String getTask() {
@@ -78,13 +78,13 @@ public class Todo {
 		return "Task: " + this.task + "\nStatus: " + this.status + "\nTask Number: " + this.todoNum + "\n";
 	}
 // small quick test 
-	public static void main(String[] args) {
-		Todo todo1 = new Todo("Test todo class.", 0, null, null);
-		Todo todo2 = new Todo("Next is set.", 0, null, todo1);
-		todo2.setTodoNum(1);
-		todo1.setNextTodo(todo2);
-		System.out.println(todo1.toString());
-		System.out.println(todo1.getNextTodo().toString());
-		System.out.println("Prev node is " + todo1.getNextTodo().getPrevTodo().toString());
-	}
+//	public static void main(String[] args) {
+//		Todo todo1 = new Todo("Test todo class.", 0, null, null);
+//		Todo todo2 = new Todo("Next is set.", 0, null, todo1);
+//		todo2.setTodoNum(1);
+//		todo1.setNextTodo(todo2);
+//		System.out.println(todo1.toString());
+//		System.out.println(todo1.getNextTodo().toString());
+//		System.out.println("Prev node is " + todo1.getNextTodo().getPrevTodo().toString());
+//	}
 }
