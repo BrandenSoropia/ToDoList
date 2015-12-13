@@ -79,29 +79,42 @@ public class TodoList {
 		return null;
 	}
 	
-	/* Go through list starting at 'start' Todo and decrement each of their todoNum by 1. */
-	void decrementTodoNum(Todo start) {
+	/* 
+	 * Go through list starting at 'start' Todo and decrement each of their todoNum by 1. 
+	 * Return the first modified Todo object. 
+	 */
+	Todo decrementTodoNum(Todo start) {
 		Todo current = start;
 		
 		while(current != null) {
 			current.setTodoNum(current.getTodoNum() - 1);
 			current = current.getNextTodo();
 		}
+		
+		return start;
 	}
 	
-	/* Removes the target from the list and updates every Todo's 'todoNum' field after target. */
-	void deleteTodo(Todo target) {
-		// Find the Todo first
-		Todo targetTodo = findTodo(target.getTodoNum());
-		// If target is head, make head's next the new head
-		if (targetTodo == null) {
-			return;
-		} else if (targetTodo.getPrevTodo() == null) {
-			this.head = targetTodo.getNextTodo();
-			decrementTodoNum(this.head);
+	/* Removes the target from the list and updates every Todo's 
+	 * 'todoNum' field after target. Return deleted Todo object. */
+	Todo deleteTodo(Todo target) {
+
+		if (this.findTodo(target.getTodoNum()) == null) { // Return null if Todo is not in list
+			return null;
+		} else if (target.getPrevTodo() == null) { // If target is head, make head's next the new head
+			if (this.getHead() == this.getTail()) { // if single item list, set head and tail to null
+				this.setTail(null);
+				this.setHead(null);
+			} else { // Otherwise set new head to be old head's next value and modify todoNum's
+				this.head = target.getNextTodo();
+				decrementTodoNum(this.head);
+			}
+			this.setNumTodos(this.getNumTodos() - 1);
+			return target;
 		} else { // Otherwise, link target's prev to target's next
-			targetTodo.getPrevTodo().setNextTodo(targetTodo.getNextTodo());
-			decrementTodoNum(targetTodo.getPrevTodo());
+			target.getPrevTodo().setNextTodo(target.getNextTodo());
+			decrementTodoNum(target.getPrevTodo());
+			this.setNumTodos(this.getNumTodos() - 1);
+			return target;
 		}
 	}
 	

@@ -53,6 +53,14 @@ public class TodoListTest {
 		}
 	}
 	
+	/* Return true iff list1 and list 2 have the same head, tail, and numTodos. */
+	boolean compareTodoLists(TodoList list1, TodoList list2) {
+		if ((list1.getHead() == list2.getHead()) && (list1.getTail() == list2.getTail()) && (list1.getNumTodos() == list2.getNumTodos())) {
+			return true;
+		}
+		return false;
+	}
+	
 	@Before
 	public void setUp() {
 		this.todoList = new TodoList();
@@ -167,12 +175,21 @@ public class TodoListTest {
 	@Test
 	public void attemptDeleteOnEmptyList() {
 		Todo targetTodo = new Todo("This task doesn't exist.");
-		// TODO: Consider changeing delete function to return something so it can be tested better.
-		// assertNull("Try to delete on an empty list", this.todoList.deleteTodo(targetTodo));
+		// TODO: Consider changing delete function to return something so it can be tested better.
+		assertNull("Try to delete on an empty list", this.todoList.deleteTodo(targetTodo));
 		
 	}
+	
 	// Delete on 1 item in 1 item list
+	@Test
+	public void deleteOneItemInOneItemList() {
+		addAmountTodo(1, this.todoList);
+		this.todoList.deleteTodo(this.todoList.getHead());
+		assertTrue("Delete the only item in the list", compareTodoLists(this.todoList, new TodoList(null, null, 0, 0)));
+	}
+	
 	// Delete multiple items one after another
+	
 	
 	// Print empty list
 	// Print 1 item list
