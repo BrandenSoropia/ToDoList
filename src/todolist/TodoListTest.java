@@ -2,6 +2,8 @@ package todolist;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -110,15 +112,65 @@ public class TodoListTest {
 	
 	// Decrement starting at head of 3 item list
 	@Test
-	public void decrementTodoNumFromHead() {
+	public void decrementTodoNumFromHeadofThreeItemList() {
 		addAmountTodo(3, this.todoList);
+		
+//		System.out.println("Prior decrement: \n");
+//		this.todoList.printContents();
+		
+		int[] expected = {0, 1, 2};
+		this.todoList.decrementTodoNum(this.todoList.getHead());
+		
+//		System.out.println("After decrement: \n");
+//		this.todoList.printContents();
+		
 		//TODO: Figure out how to test for Decrement Todo num
-		//assertEquals("Decrement starting at head of 3 item list.\n",); 
+		assertTrue("Decrement starting at head of 3 item list.\n", Arrays.equals(getAllTodoNums(this.todoList), expected)); 
 	}
+	
 	// Decrement starting in middle of item list
+	@Test
+	public void decrementTodoNumFromMiddleOfThreeItemList() {
+		addAmountTodo(3, this.todoList);
+		
+//		System.out.println("Prior decrement: \n");
+//		this.todoList.printContents();
+		
+		int[] expected = {1, 1, 2};
+		this.todoList.decrementTodoNum(this.todoList.getHead().getNextTodo());
+		
+//		System.out.println("After decrement: \n");
+//		this.todoList.printContents();
+		
+		assertTrue("Decrement starting at middle of 3 item list.\n", Arrays.equals(getAllTodoNums(this.todoList), expected)); 
+	}
+	
 	// Decrement starting at last item in list
+	@Test
+	public void decrementTodoNumFromTailOfThreeItemList() {
+		addAmountTodo(3, this.todoList);
+		
+//		System.out.println("Prior decrement: \n");
+//		this.todoList.printContents();
+		
+		int[] expected = {1, 2, 2};
+		this.todoList.decrementTodoNum(this.todoList.getTail());
+		
+//		System.out.println("After decrement: \n");
+//		this.todoList.printContents();
+		
+		//TODO: Figure out how to test for Decrement Todo num
+		assertTrue("Decrement starting at middle of 3 item list.\n", Arrays.equals(getAllTodoNums(this.todoList), expected)); 
+	}
 	
 	// Delete on empty list
+	@Test
+	public void attemptDeleteOnEmptyList() {
+		Todo targetTodo = new Todo("This task doesn't exist.");
+		// TODO: Consider changeing delete function to return something so it can be tested better.
+		// assertNull("Try to delete on an empty list", this.todoList.deleteTodo(targetTodo));
+		
+	}
 	// Delete on 1 item in 1 item list
 	// Delete multiple items one after another
 	

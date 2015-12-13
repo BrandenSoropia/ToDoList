@@ -91,13 +91,17 @@ public class TodoList {
 	
 	/* Removes the target from the list and updates every Todo's 'todoNum' field after target. */
 	void deleteTodo(Todo target) {
+		// Find the Todo first
+		Todo targetTodo = findTodo(target.getTodoNum());
 		// If target is head, make head's next the new head
-		if (target.getPrevTodo() == null) {
-			this.head = target.getNextTodo();
+		if (targetTodo == null) {
+			return;
+		} else if (targetTodo.getPrevTodo() == null) {
+			this.head = targetTodo.getNextTodo();
 			decrementTodoNum(this.head);
 		} else { // Otherwise, link target's prev to target's next
-			target.getPrevTodo().setNextTodo(target.getNextTodo());
-			decrementTodoNum(target.getPrevTodo());
+			targetTodo.getPrevTodo().setNextTodo(targetTodo.getNextTodo());
+			decrementTodoNum(targetTodo.getPrevTodo());
 		}
 	}
 	
