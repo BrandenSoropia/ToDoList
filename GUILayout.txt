@@ -24,3 +24,13 @@ Display Area:
 	Go through TodoList and populate a row  with a Todo object's task. Do this for all Todo objects in TodoList. Create a check box on the left of each row to signify status of Todo. Update Todo's status if that box is checked. (OPTIONAL: Change how the text is displayed when status is complete or not)
   
 
+Breakdown:
+-Create Main Frame
+	- Add main container to hold text field, submit button, and display area
+	Two Sections:
+		- Text area: 
+			- create input text field
+			- create submit button
+		- Display:
+			- Create display text area
+
