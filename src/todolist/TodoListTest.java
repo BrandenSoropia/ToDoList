@@ -47,9 +47,10 @@ public class TodoListTest {
 		
 		int numAdded = 1;
 		while(numAdded != amt) {
+			numAdded++;
 			Todo newTodo = new Todo("Task " + Integer.toString(numAdded));
 			list.addTodo(newTodo);
-			numAdded++;
+			
 		}
 	}
 	
@@ -188,11 +189,18 @@ public class TodoListTest {
 		assertTrue("Delete the only item in the list", compareTodoLists(this.todoList, new TodoList(null, null, 0, 0)));
 	}
 	
-	// Delete multiple items one after another
-	
-	
-	// Print empty list
-	// Print 1 item list
-	// Print 3 item list
+	// Delete multiple items one after another, list still contains some items
+	@Test
+	public void deleteMultipleSequentiallyLeavingSomeItemsInList() {
+		addAmountTodo(5, this.todoList);
+//		System.out.println("Starting List: \n");
+		this.todoList.printContents();
 
+		this.todoList.deleteTodo(this.todoList.findTodo(3)); // Delete middle "Task 3"
+		this.todoList.deleteTodo(this.todoList.getTail()); // Delete Tail "Task 5"
+		this.todoList.deleteTodo(this.todoList.getHead());// Delete Head "Task 1"
+		System.out.println("Modified List: \n");
+//		this.todoList.printContents();
+		assertTrue("Delete middle, tail then head in 5 item list.", this.todoList.getHead().getTask().equals("Task 2"));
+	}
 }

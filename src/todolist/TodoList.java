@@ -54,7 +54,7 @@ public class TodoList {
 	
 	
 	void addTodo(Todo entry) {
-		if (this.head == null) { // Check if empty Todo list
+		if (this.head == null && this.tail == null) { // Check if empty Todo list
 			this.head = entry;
 			this.head.setTodoNum(1);
 			this.tail = entry;
@@ -62,6 +62,7 @@ public class TodoList {
 			Todo oldTail = this.tail; // Save old tail
 			oldTail.setNextTodo(entry); // Add new Todo to tail's next
 			this.tail = oldTail.getNextTodo(); // Reset tail to newly added Todo
+			this.tail.setPrevTodo(oldTail); // Set new tail's prev to the old tail
 			this.tail.setTodoNum(oldTail.getTodoNum() + 1);
 		}
 		this.setNumTodos(this.getNumTodos() + 1);
@@ -108,14 +109,12 @@ public class TodoList {
 				this.head = target.getNextTodo();
 				decrementTodoNum(this.head);
 			}
-			this.setNumTodos(this.getNumTodos() - 1);
-			return target;
 		} else { // Otherwise, link target's prev to target's next
 			target.getPrevTodo().setNextTodo(target.getNextTodo());
-			decrementTodoNum(target.getPrevTodo());
-			this.setNumTodos(this.getNumTodos() - 1);
-			return target;
+			decrementTodoNum(target.getNextTodo()); // Decrement todoNum starting on target's next value
 		}
+		this.setNumTodos(this.getNumTodos() - 1);
+		return target;
 	}
 	
 	
