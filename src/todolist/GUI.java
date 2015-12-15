@@ -7,6 +7,7 @@ import javax.swing.*;
 
 public class GUI {
 	private static JTextField input;
+	private static TodoList todoList;
 
 	public static void createGUI() {
 		JFrame frame = new JFrame("Todo List");
@@ -42,7 +43,12 @@ public class GUI {
 		return input;
 	}
 	
+	public static TodoList getTodoList() {
+		return todoList;
+	}
+	
 	public static void main(String[] args) {
+		todoList = new TodoList();
 		createGUI();
 	}
 }
