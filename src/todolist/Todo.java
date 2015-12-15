@@ -7,6 +7,9 @@ public class Todo {
 	private Todo nextTodo;
 	private Todo prevTodo;
 	
+	/** Initialize Todo object setting its task field to given String task,
+	 * status and todoNum fields to default 0, and nextTodo and PrevTodo to 
+	 * default null. */
 	public Todo(String task) {
 		this.task = task;
 		this.status = 0;
@@ -15,46 +18,57 @@ public class Todo {
 		this.prevTodo = null;
 	}
 	
+	/** Return String task. */
 	String getTask() {
 		return task;
 	}
 
+	/** Set task field to String task. */
 	void setTask(String task) {
 		this.task = task;
 	}
 
+	/** Return int status. */
 	int getStatus() {
 		return status;
 	}
-
+	
+	/** Set status to given int status. */
 	void setStatus(int status) {
 		this.status = status;
 	}
 
+	/** Return int todoNum. */
 	int getTodoNum() {
 		return todoNum;
 	}
 
+	/** Set todoNum to given int todoNum. */
 	void setTodoNum(int todoNum) {
 		this.todoNum = todoNum;
 	}
 
+	/** Return Todo nextTodo. */
 	Todo getNextTodo() {
 		return nextTodo;
 	}
 
+	/** Set nextTodo to given Todo nextTodo. */
 	void setNextTodo(Todo nextTodo) {
 		this.nextTodo = nextTodo;
 	}
 
+	/** Return Todo prevTodo. */
 	Todo getPrevTodo() {
 		return prevTodo;
 	}
 
+	/** Set prevTodo to given Todo prevTodo. */
 	void setPrevTodo(Todo prevTodo) {
 		this.prevTodo = prevTodo;
 	}
 
+	/** Changes status to q if 0 and vice versa. */
 	private void changeStatus() {
 		if (this.status == 0) {
 			this.status = 1;
@@ -65,6 +79,7 @@ public class Todo {
 		} 
 	}
 	
+	/** Return true iff this Todo object's todoNum matches given int todoNum. */
 	boolean matchingTodoNum(int todoNum) {
 		if (this.getTodoNum() == todoNum) {
 			return true;
@@ -74,6 +89,8 @@ public class Todo {
 	
 	
 	@Override
+	/** Return a string containing this Todo object's task, status, and 
+	 * task number ending in a newline. */
 	public String toString() {
 		return "Task: " + this.task + "\nStatus: " + this.status + "\nTask Number: " + this.todoNum + "\n";
 	}

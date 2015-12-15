@@ -7,6 +7,7 @@ import javax.swing.*;
 public class SubmitHandler implements ActionListener {
 
 	@Override
+	/** Prints text from GUI's JTextField then clears it. */
 	public void actionPerformed(ActionEvent e) {
 		JTextField textField = GUI.getTextFieldComponent();
 		System.out.println(textField.getText());

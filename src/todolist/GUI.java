@@ -9,6 +9,7 @@ public class GUI {
 	private static JTextField input;
 	private static TodoList todoList;
 
+	/** Create main JFrame and populate it with button, text field and display area. */
 	public static void createGUI() {
 		JFrame frame = new JFrame("Todo List");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,23 +27,27 @@ public class GUI {
 		frame.setVisible(true);
 	}
 	
+	/** Add TextField to given Container container with given ActionListener action 
+	 * and setting it to display String text */
 	public static void addTextField(String text, Container container, ActionListener action) {
 		JTextField textfield = new JTextField(text, 30);
 		textfield.addActionListener(action);
 		container.add(textfield);
 	}
 	
-	/* Create a button with given String text anad add it to Container container. */
+	/** Create a button with given String text anad add it to Container container. */
 	public static void addButton(String text, Container container, ActionListener action) {
 		JButton button = new JButton(text);
 		button.addActionListener(action);
 		container.add(button);
 	}
-
+	
+	/** Get TextField object. */
 	public static JTextField getTextFieldComponent() {
 		return input;
 	}
 	
+	/** Get TodoList object. */
 	public static TodoList getTodoList() {
 		return todoList;
 	}

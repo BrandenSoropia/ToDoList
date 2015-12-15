@@ -6,6 +6,8 @@ public class TodoList {
 	private int numTodos;
 	private int numCompleted;
 
+	/** Initialize an empty TodoList setting head and tail to null,
+	 *  numTodo and numCompleted to 0. */ 
 	public TodoList() {
 		this.head = null;
 		this.tail = null;
@@ -13,46 +15,56 @@ public class TodoList {
 		this.numCompleted = 0;
 	}
 	
+	/** Initialize a TodoList object with given Todo head, Todo tail, int numTodos
+	 * and int numCompleted. */ 
 	public TodoList(Todo head, Todo tail, int numTodos, int numCompleted) {
 		this.head = head;
 		this.tail = tail;
 		this.numTodos = numTodos;
 		this.numCompleted = numCompleted;
 	}
-
+	
+	/** Return Todo head. */
 	Todo getHead() {
 		return head;
 	}
-
+	
+	/** Set head to given Todo head. */
 	void setHead(Todo head) {
 		this.head = head;
 	}
 
+	/** Return Todo tail. */
 	Todo getTail() {
 		return tail;
 	}
 
+	/** Set tail to Todo tail. */
 	void setTail(Todo tail) {
 		this.tail = tail;
 	}
 
+	/** Return int numTodos. */
 	int getNumTodos() {
 		return numTodos;
 	}
 
+	/** Set numTodos to given int numTodos. */
 	void setNumTodos(int numTodos) {
 		this.numTodos = numTodos;
 	}
 
+	/** Return int numCompleted */
 	int getNumCompleted() {
 		return numCompleted;
 	}
 
+	/** Set numCompleted to given int numCompleted. */
 	void setNumCompleted(int numCompleted) {
 		this.numCompleted = numCompleted;
 	}
 	
-	
+	/** Append given Todo entry to TodoList. */
 	void addTodo(Todo entry) {
 		if (this.head == null && this.tail == null) { // Check if empty Todo list
 			this.head = entry;
@@ -68,6 +80,8 @@ public class TodoList {
 		this.setNumTodos(this.getNumTodos() + 1);
 	}
 	
+	/** Return Todo object with matching todoNum field with given int todoNum. 
+	 * Otherwise, return null iff not found. */
 	Todo findTodo(int todoNum) {
 		Todo current = this.head;
 		// Go through all todo's in list and compare their todoNum with given todoNum
@@ -80,8 +94,7 @@ public class TodoList {
 		return null;
 	}
 	
-	/* 
-	 * Go through list starting at 'start' Todo and decrement each of their todoNum by 1. 
+	/** Go through list starting at 'start' Todo and decrement each of their todoNum by 1. 
 	 * Return the first modified Todo object. 
 	 */
 	Todo decrementTodoNum(Todo start) {
@@ -95,7 +108,7 @@ public class TodoList {
 		return start;
 	}
 	
-	/* Removes the target from the list and updates every Todo's 
+	/** Removes the target from the list and updates every Todo's 
 	 * 'todoNum' field after target. Return deleted Todo object. */
 	Todo deleteTodo(Todo target) {
 
@@ -118,7 +131,7 @@ public class TodoList {
 	}
 	
 	
-	/* Go through each Todo and print their task, status, task number. */
+	/** Go through each Todo and print their task, status, task number. */
 	void printContents() {
 		Todo current = this.head;
 		
