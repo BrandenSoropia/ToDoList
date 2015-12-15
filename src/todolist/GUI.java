@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class GUI {
+	private static JTextField input;
 
 	public static void createGUI() {
 		JFrame frame = new JFrame("Todo List");
@@ -15,23 +16,30 @@ public class GUI {
 		JPanel inputArea = new JPanel();
 		inputArea.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		inputArea.setLayout(new BoxLayout(inputArea, BoxLayout.PAGE_AXIS));
-		addTextField("Input Todo Here", inputArea);
+		addTextField("Input Todo Here and press \"enter\" or \"Submit\"", inputArea, new InputHandler());
+		input = (JTextField) inputArea.getComponent(0);
+		addButton("Submit", inputArea, new SubmitHandler());
 		
 		frame.getContentPane().add(inputArea);
 		frame.pack();
 		frame.setVisible(true);
 	}
 	
-	public static void addTextField(String text, Container container) {
-		JTextField input = new JTextField(text);
-		input.addActionListener(new InputHandler());
-		container.add(input);
+	public static void addTextField(String text, Container container, ActionListener action) {
+		JTextField textfield = new JTextField(text, 30);
+		textfield.addActionListener(action);
+		container.add(textfield);
 	}
 	
 	/* Create a button with given String text anad add it to Container container. */
-	public static void addButton(String text, Container container) {
+	public static void addButton(String text, Container container, ActionListener action) {
 		JButton button = new JButton(text);
+		button.addActionListener(action);
 		container.add(button);
+	}
+
+	public static JTextField getTextFieldComponent() {
+		return input;
 	}
 	
 	public static void main(String[] args) {
