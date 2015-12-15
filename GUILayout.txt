@@ -1,0 +1,26 @@
+General Look:
+	- one window
+	- when pressing close
+		-> save TodoList state
+	- 3 Parts: Input Area, Display Area and Chec
+
+Input Area:
+	- Text box with prompt saying "Input Task Here"
+	- Submit button right under it
+
+Display Area:
+	- Single column table with default 10 rows
+
+
+
+Implementation Breakdown:
+- Create Todo List upon start of program
+	-> read save file and create appropriate objects etc
+
+Input Area: 
+	Read contents in "Input" when "Submit" button is pressed. Take contents and create a new Task object. Add it to TodoList. Clear text box.
+
+Display Area:
+	Go through TodoList and populate a row  with a Todo object's task. Do this for all Todo objects in TodoList. Create a check box on the left of each row to signify status of Todo. Update Todo's status if that box is checked. (OPTIONAL: Change how the text is displayed when status is complete or not)
+  
+
