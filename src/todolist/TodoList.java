@@ -1,8 +1,5 @@
 package todolist;
 
-import java.io.File;
-import java.io.FileWriter;
-
 public class TodoList {
 	private Todo head;
 	private Todo tail;
@@ -25,6 +22,14 @@ public class TodoList {
 		this.tail = tail;
 		this.numTodos = numTodos;
 		this.numCompleted = numCompleted;
+	}
+	
+	/** Initialize a TodoList object with the given String array listOfTasks.*/
+	public TodoList(String[] listOfTasks) {
+		for (String task: listOfTasks) { // Create a Todo for each task and add them to TodoList object
+			Todo newTodo = new Todo(task);
+			addTodo(newTodo);
+		}
 	}
 	
 	/** Return Todo head. */
@@ -129,6 +134,7 @@ public class TodoList {
 			target.getPrevTodo().setNextTodo(target.getNextTodo());
 			decrementTodoNum(target.getNextTodo()); // Decrement todoNum starting on target's next value
 		}
+		target.changeStatus(); // Set status to complete (1)
 		this.setNumTodos(this.getNumTodos() - 1);
 		return target;
 	}
@@ -140,7 +146,7 @@ public class TodoList {
 		Todo current = this.head;
 		
 		while(current != null) {
-			listOfTasks[current.getTodoNum()] = current.getTask(); 
+			listOfTasks[current.getTodoNum() - 1] = current.getTask(); // -1 TodoNum since TodoNum starts at 1
 			current = current.getNextTodo();
 		}
 		

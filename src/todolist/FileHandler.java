@@ -1,9 +1,10 @@
 package todolist;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
 
 public class FileHandler {
 	
@@ -26,13 +27,50 @@ public class FileHandler {
 			} else {
 				System.out.println("Deletion failed.\n" );
 			}
-		} else { // Create and open new file under same name
-			file.createNewFile();
-			FileWriter writer = new FileWriter(file);
-			// Write contents into file
-			writeToFile(writer, listOfIncomplete.getAllTasks());
-			writer.close();
+		}  
+		// Create and open new file under same name
+		file.createNewFile();
+		FileWriter writer = new FileWriter(file);
+		// Write contents into file
+		writeToFile(writer, listOfIncomplete.getAllTasks());
+		System.out.println("Save complete!\n" );
+		writer.close();
+	}
+	
+	/** Return a String array containing each line from the given file. */
+	String[] readFile(File file) {
+		StringBuffer buffer = new StringBuffer();
+		try {
+			FileReader fileReader = new FileReader(file);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			
+			String line;
+			while ((line = bufferedReader.readLine()) != null) { // Collect all lines into a buffer separated by newlines
+				buffer.append(line);
+				buffer.append("\n");
+			}
+			bufferedReader.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return buffer.toString().split("\\r?\\n"); // Split on newline and return String array
 		}
+	}
+	
+	/** Return a TodoList created from the contents read from a text file. 
+	 * @throws IOException */
+	TodoList loadTodoList(String filename) {
+		File file = new File(filename);
+		if (file.exists()) { // Populate a String array based on file contents
+			String[] strings = readFile(file);
+			return new TodoList(strings);
+			
+		} else {
+			System.out.println("File does not exist. Created empty TodoList!\n");
+			return new TodoList();
+		}
+		
 	}
 	
 	
@@ -74,4 +112,39 @@ public class FileHandler {
 //		}
 //	}
 	
+	/* Used for manual testing. Add static to methods above if used again.*/
+//	public static void main(String[] args) { 
+//		TodoList list = new TodoList();
+////		Todo task1 = new Todo("Task 1"); // Alternate between task 1-3 and 4-6 to see if saved text file changes
+////		Todo task2 = new Todo("Task 2");
+////		Todo task3 = new Todo("Task 3");
+//		Todo task1 = new Todo("Task 4");
+//		Todo task2 = new Todo("Task 5");
+//		Todo task3 = new Todo("Task 6");
+//		list.addTodo(task1);
+//		list.addTodo(task2);
+//		list.addTodo(task3);
+//		try {
+//			saveTodoList(list);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		list.printContents();
+//	}
+
+	/* Test if readFile (Make readFile static when using this) */
+//	public static void main(String[] args) {
+//		File file = new File("saved_todolist.txt");
+//		String[] strings = readFile(file);
+//		for (String str: strings) {
+//			System.out.println(str);
+//		}
+//	}
+	
+	/* Test if TodoList is generated from text file (Make readFile and loadTodoList static when using this)*/
+//	public static void main(String[] args) {
+//		TodoList list = loadTodoList("saved_todolist.txt");
+//		list.printContents();
+//	}
 }

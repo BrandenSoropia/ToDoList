@@ -69,7 +69,7 @@ public class Todo {
 	}
 
 	/** Changes status to q if 0 and vice versa. */
-	private void changeStatus() {
+	void changeStatus() {
 		if (this.status == 0) {
 			this.status = 1;
 			System.out.println("Changed status from 0 to 1");

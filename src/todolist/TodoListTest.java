@@ -205,14 +205,4 @@ public class TodoListTest {
 		assertTrue("Delete middle, tail then head in 5 item list.", this.todoList.getHead().getTask().equals("Task 2"));
 	}
 	
-	@Test
-	public void saveTodoList() {
-		addAmountTodo(5, this.todoList);
-		try {
-			assertTrue(this.todoList.saveTodoList());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	}
 }
