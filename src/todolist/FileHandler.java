@@ -3,9 +3,37 @@ package todolist;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class FileHandler {
 	
+	/** Write the Strings contained in listOfStrings to the file.*/
+	void writeToFile(FileWriter writer, String[] listOfStrings) throws IOException {
+		if (listOfStrings != null) { // Write contents of listOfStrings if not empty
+			for(String str : listOfStrings) { // Write each task to file
+				writer.write(str + "\n");
+			}
+		}
+	}
+	
+	/** Writes each incomplete Todo's task in TodoList to text file. */
+	void saveTodoList(TodoList listOfIncomplete) throws IOException {
+		
+		File file = new File("saved_todolist.txt");
+		if (file.exists()) { // Delete file if it exists already to get rid of old save state
+			if(file.delete()) {
+				System.out.println("saved_todolist.txt was deleted.\n" );
+			} else {
+				System.out.println("Deletion failed.\n" );
+			}
+		} else { // Create and open new file under same name
+			file.createNewFile();
+			FileWriter writer = new FileWriter(file);
+			// Write contents into file
+			writeToFile(writer, listOfIncomplete.getAllTasks());
+			writer.close();
+		}
+	}
 	
 	
 /* Below is an attempt for ideal save method */

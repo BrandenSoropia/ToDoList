@@ -50,10 +50,10 @@ public class GUI {
 		container.add(todoListDisplay);
 	}
 	
-	/** Add item to list */
-	public static void addItemToListDisplay() {
-		todoListDisplay.addE
-	}
+//	/** Add item to list */
+//	public static void addItemToListDisplay() {
+//		todoListDisplay.addE
+//	}
 	
 	/** Get JList object */
 	public static JList getTodoListDisplay() {

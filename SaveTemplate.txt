@@ -25,10 +25,12 @@ Task C
 (Task 4) (append here) 
 end 
 
-Option 2: Use "!" to mark incomplete tasks, the rest are completed. No need to sort, just read through entire text file
+Option 2 (Bare Bones): 
+	Just keep track of incomplete Todos. 
+	Each time you save, delete the old save text file and create a new text file. 
 - Start of file - 
-!Task 1
-!Task 2
+Task 1
+Task 2
 Task 3
 Task 4
 .
