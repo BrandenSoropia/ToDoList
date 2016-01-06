@@ -1,5 +1,6 @@
 ~ TodoList Save File Template ~
 
+Option 1 (Ideal):
 - Start of file -
 NumIncomplete: #
 NumCompleted: #
@@ -23,3 +24,13 @@ Task C
 .
 (Task 4) (append here) 
 end 
+
+Option 2: Use "!" to mark incomplete tasks, the rest are completed. No need to sort, just read through entire text file
+- Start of file - 
+!Task 1
+!Task 2
+Task 3
+Task 4
+.
+.
+.
