@@ -1,5 +1,8 @@
 package todolist;
 
+import java.io.File;
+import java.io.FileWriter;
+
 public class TodoList {
 	private Todo head;
 	private Todo tail;
@@ -130,6 +133,19 @@ public class TodoList {
 		return target;
 	}
 	
+	/** Return a string array containing each incomplete Todo's 
+	 * task contained in TodoList. */
+	String[] getAllTasks() {
+		String[] listOfTasks = new String[this.numTodos]; 
+		Todo current = this.head;
+		
+		while(current != null) {
+			listOfTasks[current.getTodoNum()] = current.getTask(); 
+			current = current.getNextTodo();
+		}
+		
+		return listOfTasks;
+	}
 	
 	/** Go through each Todo and print their task, status, task number. */
 	void printContents() {
@@ -144,5 +160,5 @@ public class TodoList {
 			current = current.getNextTodo();
 		}
 	}
-	
+
 }

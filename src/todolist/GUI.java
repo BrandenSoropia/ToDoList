@@ -8,6 +8,8 @@ import javax.swing.*;
 public class GUI {
 	private static JTextField input;
 	private static TodoList todoList;
+	private static JList todoListDisplay;
+	private static DefaultListModel listModel;
 
 	/** Create main JFrame and populate it with button, text field and display area. */
 	public static void createGUI() {
@@ -35,11 +37,27 @@ public class GUI {
 		container.add(textfield);
 	}
 	
-	/** Create a button with given String text anad add it to Container container. */
+	/** Create a button with given String text and ActionListener action and add it to Container container. */
 	public static void addButton(String text, Container container, ActionListener action) {
 		JButton button = new JButton(text);
 		button.addActionListener(action);
 		container.add(button);
+	}
+	
+	/** Create a JList and add it to the Container container */
+	public static void addListDisplay(Container container) {
+		todoListDisplay = new JList();
+		container.add(todoListDisplay);
+	}
+	
+	/** Add item to list */
+	public static void addItemToListDisplay() {
+		todoListDisplay.addE
+	}
+	
+	/** Get JList object */
+	public static JList getTodoListDisplay() {
+		return todoListDisplay;
 	}
 	
 	/** Get TextField object. */

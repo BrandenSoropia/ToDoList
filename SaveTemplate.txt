@@ -1,0 +1,25 @@
+~ TodoList Save File Template ~
+
+- Start of file -
+NumIncomplete: #
+NumCompleted: #
+
+Incomplete:
+Task 1
+Task 2 
+Task 3
+(Task 4) (let’s say this one is completed, have to remove from here and append to Completed Section. When removed, the task num it has is not changed so it can be identified using that)
+.
+.
+.
+end (used to indicate where to append)
+
+Completed:
+Task A
+Task B
+Task C
+.
+.
+.
+(Task 4) (append here) 
+end 

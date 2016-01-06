@@ -2,6 +2,7 @@ package todolist;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import org.junit.Before;
@@ -199,8 +200,19 @@ public class TodoListTest {
 		this.todoList.deleteTodo(this.todoList.findTodo(3)); // Delete middle "Task 3"
 		this.todoList.deleteTodo(this.todoList.getTail()); // Delete Tail "Task 5"
 		this.todoList.deleteTodo(this.todoList.getHead());// Delete Head "Task 1"
-		System.out.println("Modified List: \n");
+//		System.out.println("Modified List: \n");
 //		this.todoList.printContents();
 		assertTrue("Delete middle, tail then head in 5 item list.", this.todoList.getHead().getTask().equals("Task 2"));
+	}
+	
+	@Test
+	public void saveTodoList() {
+		addAmountTodo(5, this.todoList);
+		try {
+			assertTrue(this.todoList.saveTodoList());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

@@ -34,3 +34,7 @@ Breakdown:
 		- Display:
 			- Create display text area
 
+Display Area:
+- Create a JList
+- Populate JList with Input (new Todo) when submit
+
